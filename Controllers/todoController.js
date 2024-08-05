@@ -29,3 +29,31 @@ exports.getAllUserTodos = async (req,res)=>{
 {
   res.status(401).json(`Error! Transaction failed: ${err}`)
 }}
+
+//edit project 
+exports.editTodo = async (req,res)=>{
+  const userId = req.payload
+  const { description, todoStatus, createdDate } = req.body
+  const {id} = req.params
+  try{
+    const updateTodo = await todos.findByIdAndUpdate({_id:id},{
+      description,createdDate,todoStatus,userId
+    },{new:true})
+  await updateTodo.save()
+  res.status(200).json(updateTodo)
+  }catch(err){
+    res.status(401).json(`Error! Transaction failed: ${err}`)
+  }
+
+}
+
+//deleteTodo
+exports.deleteTodo = async (req,res)=>{
+  const {id} = req.params
+  try{
+    const removeTodo = await todos.findByIdAndDelete({_id:id})
+    res.status(200).json(removeTodo)
+  }catch(err){
+    res.status(401).json(`Error!!!Transation failed: ${err}`)
+  }
+}

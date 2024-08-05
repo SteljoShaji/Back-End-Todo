@@ -2,9 +2,15 @@ const mongoose = require('mongoose');
 
 const todoSchema = new mongoose.Schema({
    
+   
     description: {
         type: String,
         required: true
+    },
+    createdDate: {
+        type: Date,
+        default: Date.now,
+        required:true
     },
     todoStatus: {
         type: Boolean,
@@ -12,11 +18,7 @@ const todoSchema = new mongoose.Schema({
         required:true
         
     },
-    createdDate: {
-        type: Date,
-        default: Date.now,
-        required:true
-    },
+    
     userId:{
         type: String,
         required:true
