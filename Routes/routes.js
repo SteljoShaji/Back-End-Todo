@@ -26,6 +26,10 @@ router.get('/user/all-todos',jwtMiddleware,todoController.getAllUserTodos)
 //getUserprojects
 router.get('/user/all-projects',jwtMiddleware,projectController.getAllUserProjects)
 
+//update todo status
+router.put('/todo/status/:id', todoController.updateTodoStatus);
+
+
 //editTodo
 router.put('/todo/edit/:id',jwtMiddleware,todoController.editTodo)
 
@@ -37,3 +41,4 @@ router.delete('/todo/remove/:id',jwtMiddleware,todoController.deleteTodo)
 router.delete('/project/remove/:id',jwtMiddleware,projectController.deleteProject)
 
 module.exports = router
+

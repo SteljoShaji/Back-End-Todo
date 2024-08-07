@@ -14,6 +14,7 @@ const todoSchema = new mongoose.Schema({
     },
     todoStatus: {
         type: Boolean,
+        enum: ['pending', 'completed'],
         default: false,
         required:true
         
